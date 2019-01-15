@@ -1,0 +1,7 @@
+*.cpython-35.pyc
+lib
+share
+local
+include
+bin
+.vscode
