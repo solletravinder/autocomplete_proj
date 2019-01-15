@@ -1,0 +1,7 @@
+lib
+include
+bin
+local
+share
+db.sqlite3
+.vscode
