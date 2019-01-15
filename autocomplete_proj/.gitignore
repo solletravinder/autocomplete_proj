@@ -5,3 +5,4 @@ local
 include
 bin
 .vscode
+db.sqlite3
