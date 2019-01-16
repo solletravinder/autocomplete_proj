@@ -6,3 +6,5 @@ include
 bin
 .vscode
 db.sqlite3
+static_root/
+media/
