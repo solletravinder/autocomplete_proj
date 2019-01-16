@@ -1,7 +1,8 @@
+*.cpython-35.pyc
 lib
+share
+local
 include
 bin
-local
-share
-db.sqlite3
 .vscode
+db.sqlite3
