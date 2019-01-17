@@ -26,7 +26,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/search_by_prefix/', search_by_prefix, name='search_by_prefix'),
-    url(r'^swagger/', SwaggerSchemaView.as_view()),    
+    url(r'^swagger/', SwaggerSchemaView.as_view()),
+    url(r'^$', HomePageView.as_view(),name='home'),
+    url(r'^ajax_autocomplete/$', autocomplete, name='ajax_autocomplete'),
 ]
 
 
