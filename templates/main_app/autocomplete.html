@@ -79,45 +79,28 @@ table#t01 th {
 }
 </style>
 <script type="text/javascript">
-// var options = {
-
-//   url: "{% url 'ajax_autocomplete' %}",
-
-//   getValue: "word",
-
-//   list: { 
-//     match: {
-//       enabled: true
-//     }
-//   },
-
-//   theme: "square"
-// };
-
-// $("#id_input").easyAutocomplete(options);  
-
 $(document).ready(function(){ 
     $("#id_input").on('keyup', function(){
         var value = $(this).val();
         $.ajax({
-            url: "{% url 'ajax_autocomplete' %}",
-            data: {
-              'term': value 
-            },
-            dataType: 'json',
-            success: function (data) {
-                words = "{{words}}";
-                console.log("line 110", words)
-                $("#input_list").autocomplete({
-                    source: "{{words}}",
-                    minLength: 2,
-                    open: function(){
-                        setTimeout(function () {
-                            $('.ui-autocomplete-input').css('z-index', 99);
-                        }, 0);
-                    }
-                });       
-            }
+          url: "{% url 'ajax_autocomplete' %}",
+          data: {
+            'term': value 
+          },
+          dataType: 'json',
+          success: function (data) {
+            words = "{{words}}";
+            console.log("line 110", words)
+            $("#input_list").autocomplete({
+              source: "{{words}}",
+              minLength: 2,
+              open: function(){
+                setTimeout(function () {
+                    $('.ui-autocomplete-input').css('z-index', 99);
+                }, 0);
+              }
+            });       
+          }
         });        
     });
 });
