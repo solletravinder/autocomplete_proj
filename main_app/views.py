@@ -38,8 +38,13 @@ def autocomplete(request):
     if request.is_ajax():
       word = request.GET.get('term', '')
       if word:
-        word = word.upper()
+        word = word.upper() # if data has all the words in Uppercase
+      else:
+        return  
       words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
+      if not words:
+        word = word.capitalize()
+        words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
       print(words)
     context = {
       'words' : words,
