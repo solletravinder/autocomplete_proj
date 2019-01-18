@@ -10,19 +10,22 @@ from django.views.generic.base import TemplateView
 def search_by_prefix(request):
     """
     parameters:
-        - name: word
-          description: Transporter access token
-          required: true
-          type: string
-          paramType: form
+      - name: word
+        description: type any word 
+        required: true
+        type: string
+        paramType: form
     """
     word = request.POST.get('word')
-    if word:
-    	word = word.upper()
     words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
+    if not words:
+      word = word.upper() 
+      words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
+    if not words:
+      word = word.capitalize()
+      words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
     print(words)
     return Response(words.values(), status=status.HTTP_200_OK)
-    # print("ffnj")
 class HomePageView(TemplateView):
 
   template_name = "home.html"
