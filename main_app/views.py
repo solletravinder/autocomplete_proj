@@ -5,7 +5,8 @@ from rest_framework import status
 from .models import *
 from rest_framework.decorators import api_view
 from django.views.generic.base import TemplateView
-
+from .serializers import *
+import pdb
 @api_view(['post'])
 def search_by_prefix(request):
     """
@@ -16,7 +17,9 @@ def search_by_prefix(request):
         type: string
         paramType: form
     """
-    word = request.POST.get('word')
+    # pdb.set_trace()
+    word = request.data.get('term')
+    serializer_data = []
     words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
     if not words:
       word = word.upper() 
@@ -24,8 +27,13 @@ def search_by_prefix(request):
     if not words:
       word = word.capitalize()
       words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
-    print(words)
-    return Response(words.values(), status=status.HTTP_200_OK)
+    if words:
+      serializer_data = Dictionary_DataSerializer(words, many = True).data
+    response = {
+      'data' : serializer_data,
+      'result': 1
+    }
+    return Response(response, status=status.HTTP_200_OK)
 class HomePageView(TemplateView):
 
   template_name = "home.html"
@@ -37,24 +45,11 @@ class HomePageView(TemplateView):
 
 def autocomplete(request):
   if request.method == 'GET':
-    words=[]
-    if request.is_ajax():
-      word = request.GET.get('term', '')
-      if word:
-        word = word.upper() # if data has all the words in Uppercase
-      else:
-        return  
-      words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
-      if not words:
-        word = word.capitalize()
-        words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
-      print(words)
     context = {
-      'words' : words,
       'title' : 'Autocomplete Example',
     }
       # context = {'title' : 'Autocomplete Example'}
-    return render(request, 'main_app/autocomplete.html', context) 
+    return render(request, 'main_app/autocomplete.html', {}) 
   # if request.method == 'POST':
   #   word = request.POST.get('word')
   #   if word:

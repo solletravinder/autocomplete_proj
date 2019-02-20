@@ -1,32 +1,38 @@
 {% extends 'index.html' %}
 {% block javascripts %}
-    {% load staticfiles %}
+    {% load static %}
 {% endblock %}
 {% block title %}{{title}}{% endblock %}
 {% block content %}
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div style="text-align:center;">
+
+<div style="text-align:center;" >
   <p>
     <!-- <form> -->
-    <div class="col-12">
+    <div class="col-12" ng-controller = "search_for_value">
       Search Here
       <!-- <div class="ui-widget"> -->
-      <input type="text"  list="#input_list" name="word" id='id_input' min="2" class="form-control">
+      <div angucomplete-alt id="search_field" pause="100" selected-object="wordSelected" remote-api-handler="searchWordAPI" placeholder="Search Here" remote-url-data-field="data" title-field="word" minlength="2" input-class="form-control" input-name="search_field"></div>
+
+      <input type="text" name="word" ng-model='wordSelected.originalObject.word' class='form-control'>
+      <input type="text" ng-model='wordSelected.originalObject.meaning' class='form-control' name="word_with_meaning">
+      <!-- <input type="text" name="word" id='id_input' min="2" class="form-control"> -->
     <!-- </div> -->
-    <table id="t01">
+<!--     <table id="t01">
       <tr>
         <th>Word</th>
         <th>Meaning</th> 
       </tr>
       {% for word in words%}
-      <tr>
-        <td>{{word.word}}</td>
-        <td>{{word.meaning}}</td>
-      </tr>
-      {% endfor %}
-    </table>
+        <tr>
+          <td>
+            {{word.word}}
+          </td>
+          <td>
+            {{word.meaning}}
+          </td>
+        </tr>
+      {% endfor%}
+    </table> -->
 
 <!-- 			<div class="">
 				<ul class="list">
@@ -37,10 +43,8 @@
 				</ul>
 			</div> -->
 <!-- 			<datalist id="input_list">
-				{%for a_word in words%}
-				<option value="{{a_word.word}}">
-				{% endfor%}
-			</datalist>	 -->		
+				<option >
+			</datalist> -->
 		</div>
 		<!-- </form> -->
 		</p>
@@ -83,24 +87,41 @@ $(document).ready(function(){
     $("#id_input").on('keyup', function(){
         var value = $(this).val();
         $.ajax({
-          url: "{% url 'ajax_autocomplete' %}",
+          type: "POST",
+          url: "{% url 'search_by_prefix' %}",
           data: {
             'term': value 
           },
           dataType: 'json',
           success: function (data) {
-            words = "{{words}}";
+            var words = data;
             console.log("line 110", words)
-            $("#input_list").autocomplete({
-              source: "{{words}}",
-              minLength: 2,
+            $( "#id_input" ).autocomplete({
+              source: words,
               open: function(){
                 setTimeout(function () {
                     $('.ui-autocomplete-input').css('z-index', 99);
                 }, 0);
               }
-            });       
-          }
+            });
+            // $("#id_input").autocomplete({
+            //   source: words,
+            //   minLength: 2,
+            //   open: function(){
+            //     setTimeout(function () {
+            //         $('.ui-autocomplete-input').css('z-index', 99);
+            //     }, 0);
+            //   }
+            // });
+          //   var table = $("#tableID")
+          //   table.push("<tr></tr>")
+          //   var row = table[1]
+
+          //   for(var i=0; i< words.length(); i++){
+          //     row.push('<td>'+ words[i].word.toString()+'</td>')
+          //     row.push('<td>'+ words[i].meaning.toString()+'</td>')
+          // }
+        }
         });        
     });
 });

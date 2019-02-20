@@ -8,3 +8,7 @@ bin
 db.sqlite3
 static_root/
 media/
+node_modules/
+package-lock.json
+.npmrc
+package.json
