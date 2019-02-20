@@ -3,6 +3,7 @@ chardet==3.0.4
 coreapi==2.3.3
 coreschema==0.0.4
 Django==1.11
+django-npm==1.0.0
 django-rest-swagger==2.1.0
 djangorestframework==3.5.3
 idna==2.8
