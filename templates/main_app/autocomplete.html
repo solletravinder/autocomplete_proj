@@ -7,7 +7,6 @@
 
 <div style="text-align:center;" >
   <p>
-    <!-- <form> -->
     <div class="col-12" ng-controller = "search_for_value">
       Search Here
       <!-- <div class="ui-widget"> -->
@@ -15,39 +14,8 @@
 
       <input type="text" name="word" ng-model='wordSelected.originalObject.word' class='form-control'>
       <input type="text" ng-model='wordSelected.originalObject.meaning' class='form-control' name="word_with_meaning">
-      <!-- <input type="text" name="word" id='id_input' min="2" class="form-control"> -->
-    <!-- </div> -->
-<!--     <table id="t01">
-      <tr>
-        <th>Word</th>
-        <th>Meaning</th> 
-      </tr>
-      {% for word in words%}
-        <tr>
-          <td>
-            {{word.word}}
-          </td>
-          <td>
-            {{word.meaning}}
-          </td>
-        </tr>
-      {% endfor%}
-    </table> -->
-
-<!-- 			<div class="">
-				<ul class="list">
-					{%for a_word in words%}
-					<li>{{a_word.word}}
-					</li>
-					{% endfor%}
-				</ul>
-			</div> -->
-<!-- 			<datalist id="input_list">
-				<option >
-			</datalist> -->
-		</div>
-		<!-- </form> -->
-		</p>
+		</div>		
+  </p>
 	</div>
 	<div>
 <!-- 		<select {% if tabindex %}tabindex="{{ tabindex }}"{% endif %} id="company-isin" name="company_isin" class="form-control company-select-option selectpicker " data-live-search="true" data-select-on-tab="true" ng-model="company_isin" {% if ngChange %} ng-change="{{ ngChange }}"{% endif %} {% if val_required %}required{% endif %}>
@@ -83,27 +51,27 @@ table#t01 th {
 }
 </style>
 <script type="text/javascript">
-$(document).ready(function(){ 
-    $("#id_input").on('keyup', function(){
-        var value = $(this).val();
-        $.ajax({
-          type: "POST",
-          url: "{% url 'search_by_prefix' %}",
-          data: {
-            'term': value 
-          },
-          dataType: 'json',
-          success: function (data) {
-            var words = data;
-            console.log("line 110", words)
-            $( "#id_input" ).autocomplete({
-              source: words,
-              open: function(){
-                setTimeout(function () {
-                    $('.ui-autocomplete-input').css('z-index', 99);
-                }, 0);
-              }
-            });
+// $(document).ready(function(){ 
+    // $("#id_input").on('keyup', function(){
+    //     var value = $(this).val();
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "{% url 'search_by_prefix' %}",
+    //       data: {
+    //         'term': value 
+    //       },
+    //       dataType: 'json',
+    //       success: function (data) {
+    //         var words = data;
+    //         console.log("line 110", words)
+    //         $( "#id_input" ).autocomplete({
+    //           source: words,
+    //           open: function(){
+    //             setTimeout(function () {
+    //                 $('.ui-autocomplete-input').css('z-index', 99);
+    //             }, 0);
+    //           }
+    //         });
             // $("#id_input").autocomplete({
             //   source: words,
             //   minLength: 2,
@@ -121,10 +89,10 @@ $(document).ready(function(){
           //     row.push('<td>'+ words[i].word.toString()+'</td>')
           //     row.push('<td>'+ words[i].meaning.toString()+'</td>')
           // }
-        }
-        });        
-    });
-});
+//         }
+//         });        
+//     });
+// });
 
 </script>
 <!-- <style type="text/css">

@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
+# django.template.RequestContext
 # Create your views here.
 from .models import *
 from rest_framework.decorators import api_view
 from django.views.generic.base import TemplateView
+from django.views.decorators.csrf import csrf_protect
 from .serializers import *
 import pdb
 @api_view(['post'])
+@csrf_protect
 def search_by_prefix(request):
     """
     parameters:
-      - name: word
+      - name: term
         description: type any word 
         required: true
         type: string

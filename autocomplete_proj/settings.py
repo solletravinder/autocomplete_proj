@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,10 @@ INSTALLED_APPS = [
     'rest_framework_swagger',    
 ] + [
     'main_app',
+    'django.contrib.sites',
+    'cms',
+    'menus',
+    'treebeard',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +56,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+    'cms.middleware.utils.ApphookReloadMiddleware'
 ]
 
 ROOT_URLCONF = 'autocomplete_proj.urls'
@@ -66,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cms.context_processors.cms_settings',
             ],
         },
     },
@@ -100,6 +112,13 @@ SWAGGER_SETTINGS = {
     # For validating your swagger schema(setting None to not validate)
     'VALIDATOR_URL': None,
 }
+
+#CMS RELATED SETTINGS
+SITE_ID = 1
+LANGUAGES = [
+    ('en-us', 'English'),
+    ('de', 'German'),
+]
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
