@@ -25,7 +25,7 @@ SECRET_KEY = 'c3!0(ri%gz!lqfu(h)!!wy2v@*zrq=izd$+emqe)fdq9)^h(#w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['a297833c.ngrok.io', '*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -191,12 +191,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 CORS_ORIGIN_ALLOW_ALL = False    
-CORS_ORIGIN_WHITELIST = (
-    'localhost',
-    '127.0.0.1'
-    'https://a297833c.ngrok.io',
-    'http://a297833c.ngrok.io'
-)
+CORS_ORIGIN_WHITELIST = ()
 CORS_ORIGIN_REGEX_WHITELIST = ('^(http?://)?([\w-]+\.)?ngrok\.io\/?(\/[.\w]*)*', '^(https?://)?([\w-]+\.)?ngrok\.io\/?(\/[.\w]*)*')
 CORS_URLS_REGEX = '^.*$'
 CORS_ALLOW_METHODS = (
