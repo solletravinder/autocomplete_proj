@@ -8,50 +8,24 @@
 <div style="text-align:center;" >
   <p>
     <div class="col-12" ng-controller = "search_for_value">
-      Search Here
+      <!-- <strong>Search Here</strong> -->
       <!-- <div class="ui-widget"> -->
-      <form action='' method= 'POST'>
-        {% csrf_token %}
+        
       <div angucomplete-alt id="search_field" pause="100" selected-object="wordSelected" remote-api-handler="searchWordAPI" placeholder="Search Here" remote-url-data-field="data" title-field="word" minlength="2" input-class="form-control" input-name="search_field"></div>
-
-      <input type="text" name="word" ng-model='wordSelected.originalObject.word' class='form-control'>
-      <input type="text" ng-model='wordSelected.originalObject.meaning' class='form-control' name="word_with_meaning">
-      </form>
+      <p></p>
+      <!-- <strong>Meaning: -->
+      <textarea ng-model='wordSelected.originalObject.meaning' class='form-control' placeholder='Meaning' name="word_with_meaning"></textarea> 
+      <!-- </strong> -->
 		</div>		
   </p>
 	</div>
 	<div>
-<!-- 		<select {% if tabindex %}tabindex="{{ tabindex }}"{% endif %} id="company-isin" name="company_isin" class="form-control company-select-option selectpicker " data-live-search="true" data-select-on-tab="true" ng-model="company_isin" {% if ngChange %} ng-change="{{ ngChange }}"{% endif %} {% if val_required %}required{% endif %}>
-			<option value="">Select a Company</option>
-			{% for company in words %}
-				<option  {% if company_isin == company.isin_number %} selected="selected" {% endif %} value="{{ company.isin_number }}">
-					{{ company.word}} ( {{company.meaning}} )
-				</option>
-			{% endfor %}
-		</select> -->
 	</div>
 <style>
-table {
-  width:100%;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
-table#t01 tr:nth-child(even) {
-  background-color: #eee;
-}
-table#t01 tr:nth-child(odd) {
- background-color: #fff;
-}
-table#t01 th {
-  background-color: black;
-  color: white;
-}
+  #search_field_dropdown{
+    overflow-y: auto;
+    max-height: 200px;
+  }
 </style>
 <script type="text/javascript">
 // $(document).ready(function(){ 

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -186,3 +187,34 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+CORS_ORIGIN_ALLOW_ALL = False    
+CORS_ORIGIN_WHITELIST = (
+    'localhost',
+    '127.0.0.1'
+    'https://a297833c.ngrok.io',
+    'http://a297833c.ngrok.io'
+)
+CORS_ORIGIN_REGEX_WHITELIST = ('^(http?://)?([\w-]+\.)?ngrok\.io\/?(\/[.\w]*)*', '^(https?://)?([\w-]+\.)?ngrok\.io\/?(\/[.\w]*)*')
+CORS_URLS_REGEX = '^.*$'
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'UPDATE',
+    'OPTIONS'
+)
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken'
+)
+CORS_EXPOSE_HEADERS = ()
+CORS_ALLOW_CREDENTIALS = False
