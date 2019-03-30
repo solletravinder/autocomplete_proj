@@ -20,7 +20,6 @@ def search_by_prefix(request):
         type: string
         paramType: form
     """
-    # pdb.set_trace()
     word = request.data.get('term')
     serializer_data = []
     words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
@@ -53,14 +52,7 @@ def autocomplete(request):
     }
       # context = {'title' : 'Autocomplete Example'}
     return render(request, 'main_app/autocomplete.html', {}) 
-  # if request.method == 'POST':
-  #   word = request.POST.get('word')
-  #   if word:
-  #     word = word.upper()
-  #   words = Dictionary_Data.objects.filter(word__startswith = word).order_by('word')
-  #   print(words)
-  #   context = {
-  #     'words' : words,
-  #     'title' : 'Autocomplete Example',
-  #   }
-  #   return render(request, 'main_app/autocomplete.html', context)  
+
+
+class AutoCompleteAPIView():
+  pass
