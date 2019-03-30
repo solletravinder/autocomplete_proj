@@ -10,10 +10,13 @@
     <div class="col-12" ng-controller = "search_for_value">
       Search Here
       <!-- <div class="ui-widget"> -->
+      <form action='' method= 'POST'>
+        {% csrf_token %}
       <div angucomplete-alt id="search_field" pause="100" selected-object="wordSelected" remote-api-handler="searchWordAPI" placeholder="Search Here" remote-url-data-field="data" title-field="word" minlength="2" input-class="form-control" input-name="search_field"></div>
 
       <input type="text" name="word" ng-model='wordSelected.originalObject.word' class='form-control'>
       <input type="text" ng-model='wordSelected.originalObject.meaning' class='form-control' name="word_with_meaning">
+      </form>
 		</div>		
   </p>
 	</div>

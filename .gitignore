@@ -10,3 +10,6 @@ media/
 package-lock.json
 .npmrc
 package.json
+/Makefile
+/source/
+/make.bat
