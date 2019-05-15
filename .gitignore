@@ -1,5 +1,6 @@
 *.cpython-35.pyc
 lib
+lib64
 share
 local
 include

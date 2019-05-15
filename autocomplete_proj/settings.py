@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +42,6 @@ INSTALLED_APPS = [
 ] + [
     'main_app',
     'django.contrib.sites',
-    'cms',
-    'menus',
-    'treebeard',
 ]
 
 MIDDLEWARE = [
@@ -58,11 +54,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
-    'cms.middleware.utils.ApphookReloadMiddleware'
 ]
 
 ROOT_URLCONF = 'autocomplete_proj.urls'
@@ -78,7 +69,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cms.context_processors.cms_settings',
             ],
         },
     },
@@ -136,7 +126,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.mysql',
        'NAME': 'dict_database',
        'USER': 'root',
-       'PASSWORD': 'root',
+       'PASSWORD': 'ravinder',
        'HOST': 'localhost',
        'PORT': '3306',
    }
