@@ -11,6 +11,7 @@ myApp.controller('search_for_value', ['$scope', '$http', '$location', "$rootScop
     }
 }]);
 myApp.run(function ($http, $cookies) {
+    console.log($cookies)
     if($cookies.csrftoken){
         $http.defaults.headers.common['X-CSRFToken'] = $cookies.csrftoken;
     }else{
