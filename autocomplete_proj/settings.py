@@ -114,23 +114,23 @@ LANGUAGES = [
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'dict_database',
-       'USER': 'root',
-       'PASSWORD': 'ravinder',
-       'HOST': 'localhost',
-       'PORT': '3306',
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'dict_database',
+#        'USER': 'root',
+#        'PASSWORD': 'ravinder',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#    }
+# }
 
 
 # Password validation
@@ -180,7 +180,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
-CORS_ORIGIN_ALLOW_ALL = False    
+CORS_ORIGIN_ALLOW_ALL = True    
 CORS_ORIGIN_WHITELIST = ()
 CORS_ORIGIN_REGEX_WHITELIST = ('^(http?://)?([\w-]+\.)?ngrok\.io\/?(\/[.\w]*)*', '^(https?://)?([\w-]+\.)?ngrok\.io\/?(\/[.\w]*)*')
 CORS_URLS_REGEX = '^.*$'
@@ -203,3 +203,8 @@ CORS_ALLOW_HEADERS = (
 )
 CORS_EXPOSE_HEADERS = ()
 CORS_ALLOW_CREDENTIALS = False
+
+try:
+    from local_settings import *
+except:
+    pass 
