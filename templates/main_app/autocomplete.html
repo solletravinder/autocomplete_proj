@@ -7,9 +7,9 @@
 
 <div style="text-align:center;" >
   <p>
-    {% csrf_token %}
-    <input type="hidden" id="auth_token" value="{% csrf_token %}" name="csrfmiddlewaretoken">
+    <!-- {% csrf_token %} -->
     <div class="col-12" ng-controller = "search_for_value">
+      <input type="hidden" id="auth_token" value="{% csrf_token %}" name="csrfmiddlewaretoken">
       <!-- <strong>Search Here</strong> -->
       <!-- <div class="ui-widget"> -->
         
