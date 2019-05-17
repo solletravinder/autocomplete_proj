@@ -17,6 +17,7 @@ myApp.run(function ($http, $cookies) {
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
         $http.defaults.headers.common['X-CSRFToken'] = csrftoken
     }
+    console.log($http.defaults.headers.common)
 
 });
 myApp.config(['$httpProvider', function ($httpProvider) {
