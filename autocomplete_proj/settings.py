@@ -206,6 +206,6 @@ CORS_EXPOSE_HEADERS = ()
 CORS_ALLOW_CREDENTIALS = False
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except:
     pass 
