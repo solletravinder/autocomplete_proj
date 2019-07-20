@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',    
 ] + [
+    'drf_yasg',
     'main_app',
     'django.contrib.sites',
 ]
@@ -88,22 +89,22 @@ REST_FRAMEWORK = {
     ],
 }
 
-SWAGGER_SETTINGS = {
-    # For using django admin panel for authentication
-    'USE_SESSION_AUTH': False,
-    'LOGIN_URL': 'rest_framework:login',
-    'LOGOUT_URL': 'rest_framework:logout',
+# SWAGGER_SETTINGS = {
+#     # For using django admin panel for authentication
+#     'USE_SESSION_AUTH': False,
+#     'LOGIN_URL': 'rest_framework:login',
+#     'LOGOUT_URL': 'rest_framework:logout',
 
-    # For using other mechanisms for authentication ('basic' uses username/password)
-    'SECURITY_DEFINITIONS': {
-        'basic': {
-            'type': 'basic',
-        },
-    },
+#     # For using other mechanisms for authentication ('basic' uses username/password)
+#     'SECURITY_DEFINITIONS': {
+#         'basic': {
+#             'type': 'basic',
+#         },
+#     },
 
-    # For validating your swagger schema(setting None to not validate)
-    'VALIDATOR_URL': None,
-}
+#     # For validating your swagger schema(setting None to not validate)
+#     'VALIDATOR_URL': None,
+# }
 
 #CMS RELATED SETTINGS
 SITE_ID = 1
@@ -131,6 +132,19 @@ DATABASES = {
        'HOST': 'localhost',
        'PORT': '3306',
    }
+}
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': True,
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+}
+
+REDOC_SETTINGS = {
+   'LAZY_RENDERING': False,
 }
 
 
