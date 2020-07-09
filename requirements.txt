@@ -59,7 +59,6 @@ sphinxcontrib-htmlhelp==1.0.1
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.2
 sphinxcontrib-serializinghtml==1.1.1
-treebeard==0.1.1
 tzlocal==1.5.1
 uritemplate==3.0.0
 urllib3==1.24.1
