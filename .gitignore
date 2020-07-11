@@ -6,7 +6,6 @@ local
 include
 bin
 .vscode
-db.sqlite3
 media/
 package-lock.json
 .npmrc
