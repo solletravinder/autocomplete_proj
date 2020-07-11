@@ -71,5 +71,5 @@ sphinxcontrib-serializinghtml==1.1.1
 sqlparse==0.3.1
 tzlocal==1.5.1
 uritemplate==3.0.0
-urllib3==1.24.1
+urllib3==1.24.2
 whitenoise==5.1.0
