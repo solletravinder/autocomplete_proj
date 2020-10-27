@@ -9,7 +9,7 @@ chardet==3.0.4
 cms==0.0.2
 coreapi==2.3.3
 coreschema==0.0.4
-cryptography==2.6.1
+cryptography==3.2
 dj-database-url==0.5.0
 Django==1.11.20
 django-classy-tags==0.8.0
