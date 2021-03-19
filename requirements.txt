@@ -23,7 +23,7 @@ django-sekizai==0.10.0
 django-treebeard==4.3
 djangocms-admin-style==1.3.0
 djangocms-installer==1.1.0
-djangorestframework==3.10.1
+djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 docutils==0.14
 drf-yasg==1.16.1
